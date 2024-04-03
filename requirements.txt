@@ -11,7 +11,6 @@ pydantic>=1.10.15
 pytest==6.2.3
 pytest-timeout==2.1.0
 soundfile==0.10.3.post1
-tensorboard==2.15.0
 torch==2.2.1
 torchaudio>=0.5.0
 torchvision>=0.6.0

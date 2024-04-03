@@ -5,12 +5,12 @@ from pathlib import Path
 
 import torch
 import torch.nn as nn
-from torch.utils.tensorboard import SummaryWriter
+
+import tensorflow as tf
 
 from howl.config import TrainingConfig
 from howl.settings import KEY_TO_SETTINGS_CLASS, SETTINGS, HowlSettings
 from howl.utils.dataclass import gather_dict
-
 
 @dataclass
 class Workspace:
@@ -26,7 +26,7 @@ class Workspace:
         log_path = self.path / "logs"
         if self.delete_existing:
             shutil.rmtree(str(log_path), ignore_errors=True)
-        self.summary_writer = SummaryWriter(str(log_path))
+        self.summary_writer = tf.summary.create_file_writer(str(log_path))
 
     def model_path(self, best=False):
         """Path of the trained .pt file"""
